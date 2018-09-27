@@ -302,6 +302,7 @@ END_RELOC_NUMBERS (R_MIPS_maxext)
 #define E_MIPS_MACH_GS464       0x00A20000
 #define E_MIPS_MACH_GS464E	0x00A30000
 #define E_MIPS_MACH_GS264E	0x00A40000
+#define E_MIPS_MACH_LX5280  0x00A50000
 
 /* Processor specific section indices.  These sections do not actually
    exist.  Symbols with a st_shndx field corresponding to one of these
@@ -1267,6 +1268,7 @@ extern void bfd_mips_elf_swap_abiflags_v0_out
 #define AFL_EXT_LOONGSON_2F  18  /* ST Microelectronics Loongson 2F.  */
 #define AFL_EXT_OCTEON3      19  /* Cavium Networks Octeon3.  */
 #define AFL_EXT_INTERAPTIV_MR2 20  /* Imagination interAptiv MR2.  */
+#define AFL_EXT_LX5280       21  /* Lexra LX5280.  */
 
 /* Masks for the flags1 word of an ABI flags structure.  */
 #define AFL_FLAGS1_ODDSPREG   1	 /* Uses odd single-precision registers.  */
