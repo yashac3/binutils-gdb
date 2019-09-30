@@ -6999,6 +6999,9 @@ _bfd_elf_mips_mach (flagword flags)
     case E_MIPS_MACH_IAMR2:
       return bfd_mach_mips_interaptiv_mr2;
 
+    case E_MIPS_MACH_LX5280:
+      return bfd_mach_mips_lx5280;
+
     default:
       switch (flags & EF_MIPS_ARCH)
 	{
@@ -12386,6 +12389,10 @@ mips_set_isa_flags (bfd *abfd)
     case bfd_mach_mipsisa64r6:
       val = E_MIPS_ARCH_64R6;
       break;
+
+    case bfd_mach_mips_lx5280:
+      val = E_MIPS_ARCH_1 | E_MIPS_MACH_LX5280;
+      break;
     }
   elf_elfheader (abfd)->e_flags &= ~(EF_MIPS_ARCH | EF_MIPS_MACH);
   elf_elfheader (abfd)->e_flags |= val;
@@ -14447,6 +14454,7 @@ static const struct mips_mach_extension mips_mach_extensions[] =
   { bfd_mach_mips4010, bfd_mach_mips6000 },
 
   /* MIPS I extensions.  */
+  { bfd_mach_mips_lx5280, bfd_mach_mips3000 },
   { bfd_mach_mips6000, bfd_mach_mips3000 },
   { bfd_mach_mips3900, bfd_mach_mips3000 }
 };
@@ -14504,6 +14512,7 @@ bfd_mips_isa_ext_mach (unsigned int isa_ext)
     case AFL_EXT_OCTEONP:     return bfd_mach_mips_octeonp;
     case AFL_EXT_OCTEON2:     return bfd_mach_mips_octeon2;
     case AFL_EXT_XLR:	      return bfd_mach_mips_xlr;
+    case AFL_EXT_LX5280:      return bfd_mach_mips_lx5280;
     default:		      return bfd_mach_mips3000;
     }
 }
@@ -14535,6 +14544,7 @@ bfd_mips_isa_ext (bfd *abfd)
     case bfd_mach_mips_xlr:	    return AFL_EXT_XLR;
     case bfd_mach_mips_interaptiv_mr2:
       return AFL_EXT_INTERAPTIV_MR2;
+    case bfd_mach_mips_lx5280:	    return AFL_EXT_LX5280;
     default:			    return 0;
     }
 }
@@ -16147,6 +16157,9 @@ print_mips_isa_ext (FILE *file, unsigned int isa_ext)
       break;
     case AFL_EXT_INTERAPTIV_MR2:
       fputs ("Imagination interAptiv MR2", file);
+      break;
+    case AFL_EXT_LX5280:
+      fputs ("Lexra LX5280", file);
       break;
     default:
       fprintf (file, "%s (%d)", _("Unknown"), isa_ext);

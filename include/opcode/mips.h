@@ -1220,7 +1220,7 @@ static const unsigned int mips_isa_table[] = {
 #undef ISAF
 
 /* Masks used for Chip specific instructions.  */
-#define INSN_CHIP_MASK		  0xc7ff4f60
+#define INSN_CHIP_MASK		  0xcfff4f60
 
 /* Cavium Networks Octeon instructions.  */
 #define INSN_OCTEON		  0x00000800
@@ -1260,6 +1260,8 @@ static const unsigned int mips_isa_table[] = {
 #define INSN_XLR                 0x00000020
 /* Imagination interAptiv MR2.  */
 #define INSN_INTERAPTIV_MR2	  0x04000000
+/* Lexra LX5280.  */
+#define INSN_LX5280               0x08000000
 
 /* DSP ASE */
 #define ASE_DSP			0x00000001
@@ -1384,6 +1386,7 @@ static const unsigned int mips_isa_table[] = {
 #define CPU_OCTEON3	6503
 #define CPU_XLR     	887682   	/* decimal 'XLR'   */
 #define CPU_INTERAPTIV_MR2 736550	/* decimal 'IA2'  */
+#define CPU_LX5280  105280
 
 /* Return true if the given CPU is included in INSN_* mask MASK.  */
 
@@ -1453,6 +1456,9 @@ cpu_is_member (int cpu, unsigned int mask)
 
     case CPU_INTERAPTIV_MR2:
       return (mask & INSN_INTERAPTIV_MR2) != 0;
+
+    case CPU_LX5280:
+      return (mask & INSN_LX5280) != 0;
 
     case CPU_MIPS32R6:
       return (mask & INSN_ISA_MASK) == INSN_ISA32R6;
